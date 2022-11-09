@@ -1,0 +1,228 @@
+/* #region (fold region please) Custom specificity  
+	! Specificity is in ascending order, lower number best
+	? Every element after the previous except the first increases specificity by 1
+	* 1: {id, element, root, * tag, body, html} 2: {class, psuedo-elements, matching selector} 3: {psuedo-classes, type}
+	!!!!!! 0: {!important} -- Should there come a time to decide if !important ranks above a certain id and it judges the ranking in which the css is placed, it comes first. Else return to the stated above.
+	Added common tags like body and html to inlude in element if it wasn't clear if I stated element.
+	? Tip: L10 for reading the docs, the custom specificity is visual based and per selector
+*/
+/* #endregion (fold region please) This is only for understanding custom ways I've set things */
+/* Unit convention -- rem, CSS layout -- cascading theory, Sizing unit ordered by size ascending and units with text comes before text after integers */
+/* #region -- Base stuff, root, body, html etc. */
+:root {
+	font-size: 62.5%;
+	--client-width: 9rem;
+	--flex-gap: 1rem;
+	}
+* {
+	margin:0;
+	padding:0;
+	}
+body {
+	font-size: 1.6rem;
+	}
+html, body {
+		width:				100%; 
+		min-height:				100%; 
+		font-size: 		1.2rem; 
+		text-align:		center;
+		font-family:	Arial, Helvetica, sans-serif; 
+	}
+/* #endregion */
+
+
+/* #region -- Main container */
+#salon {
+	margin-top:		5rem;
+	width:				80rem;
+	min-height:				87rem;
+	border:				1rem solid;
+	margin:				0 auto; 
+	border-color:#CCC;
+}
+#clients_queue,#cashier,#exit {	border: .1rem solid; border-color:#666;}
+/* Queue of customers */
+#clients_queue {
+	margin-top:		9rem;
+	width:				20rem;
+	min-height: 			50rem;
+	margin-left:	59rem;
+	position: 		absolute;
+	text-align:		center;
+}
+.client {
+	font-size:										1rem;
+	margin-top:										1rem;
+	line-height:									1rem;
+	padding: 											.4rem 0;
+	min-height:												8rem;
+	margin:/*Auto vertical align*/0 auto;
+	border:												.1rem solid;
+	width:												var(--client-width); 
+	background-position:					bottom;
+	background-repeat:						no-repeat;
+  position:											relative;
+	background-color:						#FFF;
+}
+.preference {
+	width: max-content;
+	flex-shrink: 0;
+}
+/* ID */
+#cars_place {
+	display: flex;
+	flex-direction: column;
+	gap: var(--flex-gap);
+	height: 100%;
+}
+#cars_place ul li {
+	padding: 		1rem;
+	border: 		.1rem solid;
+	display: 		inline-block;
+}
+/* Parent div of cars */
+.place {
+	min-height: 		21rem;
+	width: 			40rem;
+	border:			.1rem solid;
+	position: 	absolute;
+}
+/* Child image div */
+.car {
+	z-index: 		-2;
+	width: 			7rem;
+	min-height: 7rem;
+}
+/* Child image div with client */
+#porsche {
+	width: 40rem;
+}
+#porsche > ul {
+	margin: 		0;
+	padding: 		0;
+	gap: 				var(--flex-gap);
+	width: 			40rem;
+	display: 		flex;
+	flex-wrap: 	wrap;
+	list-style: none;
+	box-sizing: border-box;
+}
+#porsche > ul > li {
+	display: flex;
+	gap: var(--flex-gap);
+	flex-shrink: 1;
+	flex-grow: 1;
+	flex-basis: 1;
+	/* flex-wrap and direction weirdly causes it to stack on one top of each other -- future me, also direction was intended bozo kami */
+	flex-wrap: 	wrap;
+	/* flex-direction: column; */
+	padding: 0;
+	margin: 0;
+}
+:where(first_customer) li {
+	width: 10rem;
+}
+#porsche > ul > li > img {
+	height: 10vh;
+	float: left;
+	border: none !important;
+	margin: auto;
+}
+
+#porsche > ul > li > div {
+	/* flex: 50%; */
+	box-sizing: border-box;
+	background-repeat: no-repeat;
+	background-size: cover;
+	float: right;
+	width: 5rem;
+}
+#porsche > ul > li > div > span.preference {
+	display: none;
+}
+.preference {
+	width: min-content;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	font-weight: bold;
+	margin: auto;
+	font-size: 1rem;
+	width: min-content;
+}
+/* Custom car margins -- static */
+#volkswagen {
+	margin-top: 22rem;
+}
+#audi {
+	margin-top:	44rem;
+}
+#bmw {
+	margin-top:	66rem;
+}
+/* Cashier */
+#cashier {
+	width:				15rem;
+	min-height:		20rem;
+	margin-top:		39rem;
+	margin-left:	42rem;
+	position:			absolute;
+}
+#cashier > div {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: inherit;
+}
+#cashier > div > img {
+	width: 12rem;
+	min-height: 80%;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* #region -- Leave container */
+#exit {
+	width:				15rem;
+	margin-top:		18rem;
+	min-height:				20rem;
+	margin-left:	42rem;
+	position:			absolute;
+}
+#exitImg {
+	position: relative;
+	top: -50%;
+	margin-top: 4.7rem;
+	min-height: 7rem;
+	width: 12rem;
+}
+/* #endregion */
+
+/* #region Amount of client, cars and amount */
+#display {
+	margin-top:  1rem;
+	width:       26rem;
+	margin-left: 50rem;
+	position:    absolute;
+}
+#display ul{padding: 0;}
+#display ul li {
+	padding: 1rem;
+	border:  .1rem solid;
+	display: inline-block;
+}
+/* #endregion */
+
+/*  #region -- Client images  */
+.client_1{background-image:url(images/client_1.jpg);}
+.client_2{background-image:url(images/client_2.jpg);}
+.client_3{background-image:url(images/client_3.jpg);}
+.client_4{background-image:url(images/client_4.jpg);}
+.client_5{background-image:url(images/client_5.jpg);}
+.client_6{background-image:url(images/client_6.jpg);}
+.client_7{background-image:url(images/client_7.jpg);}
+.client_8{background-image:url(images/client_8.jpg);}
+.client_9{background-image:url(images/client_9.jpg);}
+.client_10{background-image:url(images/client_10.jpg);}
+/* #endregion */
+
+/* #endregion */
