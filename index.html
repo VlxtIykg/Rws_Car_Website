@@ -3,7 +3,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>Car Dealer</title>
-	<link rel="icon" href="images/car-title-logo.png" />
+	<!-- <link rel="icon" href="images/car-title-logo.png" /> -->
 	<link rel="stylesheet" href="dealer.css" type="text/css" />
 	<script type="text/javascript" language="javascript" src="jquery/js/jquery-1.8.3.js"></script>
 	<script type="text/javascript" language="javascript" src="jquery/js/jquery-ui-1.9.2.custom.js"></script>
@@ -13,7 +13,6 @@
 <body>
 	<div id="salon">
 
-		<div id="clients_queue">clients queue</div>
 		<div id="cars_place">
 
 			<!-- Porsche L18 -->
@@ -64,33 +63,36 @@
 				
 		</div>
 			
-		<!-- Cashier L66 -->
-		<div id="cashier">
-			<h4>cashier</h4>
-			<div>
-				<img src="images/cashier.jpg" alt="Cashier">
+		<!-- staffbox L66 -->
+		<div id="staffbox" class="staffbox">
+			<!-- Exit L68 -->
+			<div id="exit" class="staffbox__exit">
+				<h4>exit</h4>
+				<div>
+					<img class="staffbox__image" id="exitImg" src="images/exit.gif" alt="Exit gif">
+				</div>
 			</div>
-		</div>
-			
-		<!-- Exit L74 -->
-		<div id="exit">
-			<h4>exit</h4>
-			<div>
-				<img id="exitImg" src="images/exit.gif" alt="Exit gif">
+			<!-- Cashier L75 -->
+			<div id="cashier" class="staffbox__cashier">
+				<h4>cashier</h4>
+				<div>
+					<img class="staffbox__image" src="images/cashier.jpg" alt="Cashier">
+				</div>
 			</div>
 		</div>
 
-		<!-- (Car | client | money amt) L82 -->
-		<div id="display">
-			<ul>
-				<li id="clients_served">10 clients</li>
-				<li id="cars_sold">10 cars</li>
-				<li id="amount">€ 120.000,00</li>
-			</ul>
-		</div>
+		<div id="clients_queue">clients queue</div>
 
 	</div>
 
-	<button onclick="testFunc()" width="20px"></button>
+	<!-- (Car | client | money amt) L88 -->
+	<div id="display" class="display">
+		<ul>
+			<li id="clients_served" class="display__client">10 clients</li>
+			<li id="cars_sold" class="display__car">10 cars</li>
+			<li id="amount" class="display__amount">€ 120.000,00</li>
+		</ul>
+	</div>
+
 </body>
 </html>

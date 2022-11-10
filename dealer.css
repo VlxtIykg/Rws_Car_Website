@@ -10,82 +10,143 @@
 /* Unit convention -- rem, CSS layout -- cascading theory, Sizing unit ordered by size ascending and units with text comes before text after integers */
 /* #region -- Base stuff, root, body, html etc. */
 :root {
-	font-size: 62.5%;
-	--client-width: 9rem;
-	--flex-gap: 1rem;
+	font-size: 				62.5%;
+	--small-spacing:	0.25rem 0.5rem 0.25rem 0.5rem;
+	--flex-gap: 			1rem;
+	--client-width: 	9rem;
+	--stafbox-width: 	12.2rem;
+	--client-queue: 	20rem;
+	--container-twoH: 22.2rem;
+	--small-br:				.1rem solid;
+	--medium-br: 			1rem solid;
+	--twSpeed:				6s;
+	--primary-br:		#666;
+	--bg-clr-client:	hsl(49 37% 94%);
 	}
 * {
-	margin:0;
-	padding:0;
+	margin:		0;
+	padding:	0;
 	}
 body {
 	font-size: 1.6rem;
+	font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 	}
 html, body {
 		width:				100%; 
-		min-height:				100%; 
+		min-height:		100%;
 		font-size: 		1.2rem; 
 		text-align:		center;
 		font-family:	Arial, Helvetica, sans-serif; 
 	}
 /* #endregion */
 
+/* Computer--ipad layout */
 
 /* #region -- Main container */
 #salon {
-	margin-top:		5rem;
-	width:				80rem;
-	min-height:				87rem;
-	border:				1rem solid;
-	margin:				0 auto; 
-	border-color:#CCC;
+	margin-top:			5rem;
+	width:					100%;
+	min-height:			87rem;
+	margin:					0 auto; 
+	display: 				flex;
+	align-items: 		stretch;
+	position: 			relative;
+	border:					var(--medium-br) #CCC;
 }
-#clients_queue,#cashier,#exit {	border: .1rem solid; border-color:#666;}
+#salon > * {
+	margin:	var(--small-spacing)
+}
+#clients_queue,#cashier,#exit {	
+	border: 				var(--small-br); 
+	border-color:		var(--primary-br);
+}
 /* Queue of customers */
 #clients_queue {
-	margin-top:		9rem;
-	width:				20rem;
+	margin-top:				var(--container-twoH);
+	width:						20rem;
 	min-height: 			50rem;
-	margin-left:	59rem;
-	position: 		absolute;
-	text-align:		center;
+	position: 				relative;
+	text-align:				center;
+	background-color: var(--bg-clr-client);
 }
 .client {
 	font-size:										1rem;
-	margin-top:										1rem;
 	line-height:									1rem;
+	min-height:										8rem;
 	padding: 											.4rem 0;
-	min-height:												8rem;
 	margin:/*Auto vertical align*/0 auto;
-	border:												.1rem solid;
+	margin-top:										1rem;
+	border:												var(--small-br);
 	width:												var(--client-width); 
 	background-position:					bottom;
 	background-repeat:						no-repeat;
   position:											relative;
-	background-color:						#FFF;
+	background-color:							teal;
+
 }
-.preference {
-	width: max-content;
-	flex-shrink: 0;
+.disappear {
+	display: none;
+	opacity: 0;
+}
+#aoc {
+	padding: 0;
+	box-sizing: border-box;
+	margin: 0 auto;
+	width: 15.5rem;
+	margin-top: 	1rem;
+	position: 		relative;
+	font-family: 	"Source Code Pro", monospace;
+}
+#aoc::before,
+#aoc::after {
+	top: 			0;
+	right: 		0;
+	bottom: 	0; 
+	left: 		0;
+	content: 	'';
+	position: absolute;
+}
+
+#aoc::before {
+	background:		var(--bg-clr-client);
+	animation: 
+		typewriter 	var(--twSpeed) steps(19) 1s forwards;
+}
+
+#aoc::after {
+	width: 				0.250em;
+	border: 			var(--small-br);
+	background: white;
+	animation: 
+		typewriter 	var(--twSpeed) steps(19) 1s forwards,
+		blink 750ms steps(19) infinite;
+}
+
+@keyframes typewriter {
+	to {left: 100%;}
+}
+@keyframes blink {
+	to {border: none; background: var(--bg-clr-client);}
 }
 /* ID */
 #cars_place {
 	display: flex;
 	flex-direction: column;
 	gap: var(--flex-gap);
-	height: 100%;
+	width: 40rem;
+	height: 120%;
 }
 #cars_place ul li {
-	padding: 		1rem;
-	border: 		.1rem solid;
-	display: 		inline-block;
+	padding: 			1rem;
+	border: 			var(--small-br);
+	display: 			inline-block;
 }
 /* Parent div of cars */
 .place {
-	min-height: 		21rem;
-	width: 			40rem;
-	border:			.1rem solid;
-	position: 	absolute;
+	min-height: 	21rem;
+	width: 				40rem;
+	margin: 			var(--small-spacing);
+	border:				var(--small-br);
 }
 /* Child image div */
 .car {
@@ -94,14 +155,10 @@ html, body {
 	min-height: 7rem;
 }
 /* Child image div with client */
-#porsche {
-	width: 40rem;
-}
 #porsche > ul {
-	margin: 		0;
+	margin: 		var(--small-spacing);
 	padding: 		0;
 	gap: 				var(--flex-gap);
-	width: 			40rem;
 	display: 		flex;
 	flex-wrap: 	wrap;
 	list-style: none;
@@ -109,6 +166,7 @@ html, body {
 }
 #porsche > ul > li {
 	display: flex;
+	width:	25%;
 	gap: var(--flex-gap);
 	flex-shrink: 1;
 	flex-grow: 1;
@@ -118,9 +176,6 @@ html, body {
 	/* flex-direction: column; */
 	padding: 0;
 	margin: 0;
-}
-:where(first_customer) li {
-	width: 10rem;
 }
 #porsche > ul > li > img {
 	height: 10vh;
@@ -148,67 +203,16 @@ html, body {
 	font-size: 1rem;
 	width: min-content;
 }
-/* Custom car margins -- static */
-#volkswagen {
-	margin-top: 22rem;
-}
-#audi {
-	margin-top:	44rem;
-}
-#bmw {
-	margin-top:	66rem;
-}
-/* Cashier */
-#cashier {
-	width:				15rem;
-	min-height:		20rem;
-	margin-top:		39rem;
-	margin-left:	42rem;
-	position:			absolute;
-}
-#cashier > div {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	min-height: inherit;
-}
-#cashier > div > img {
-	width: 12rem;
-	min-height: 80%;
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-}
 
-/* #region -- Leave container */
-#exit {
-	width:				15rem;
-	margin-top:		18rem;
-	min-height:				20rem;
-	margin-left:	42rem;
-	position:			absolute;
+/* #region -- Staffbox container */
+#staffbox {
+	margin-top: var(--container-twoH);
 }
-#exitImg {
-	position: relative;
-	top: -50%;
-	margin-top: 4.7rem;
-	min-height: 7rem;
-	width: 12rem;
+.staffbox__exit {
+	width:				12rem;
 }
-/* #endregion */
-
-/* #region Amount of client, cars and amount */
-#display {
-	margin-top:  1rem;
-	width:       26rem;
-	margin-left: 50rem;
-	position:    absolute;
-}
-#display ul{padding: 0;}
-#display ul li {
-	padding: 1rem;
-	border:  .1rem solid;
-	display: inline-block;
+.staffbox__image {
+	width: 				7rem;
 }
 /* #endregion */
 
@@ -225,4 +229,27 @@ html, body {
 .client_10{background-image:url(images/client_10.jpg);}
 /* #endregion */
 
+/* #endregion */
+
+/* #region Amount of client, cars and amount */
+.display {
+	width:       25.5rem;
+	position:    absolute;
+	top: 0;
+	right: 0;
+	margin-top: 1rem;
+}
+.display ul{
+	padding: 0;
+	margin: 0;
+}
+.display ul li {
+	padding: 1rem;
+	border:  var(--small-br);
+	display: inline-block;
+}
+.display__client {
+	box-sizing: border-box;
+	box-shadow: #666;
+}
 /* #endregion */
