@@ -9,35 +9,55 @@
 /* #endregion (fold region please) This is only for understanding custom ways I've set things */
 /* Unit convention -- rem, CSS layout -- cascading theory, Sizing unit ordered by size ascending and units with text comes before text after integers */
 /* #region -- Base stuff, root, body, html etc. */
+@import url(https://fonts.google.com/specimen/Oswald);
+
 :root {
-	font-size: 				62.5%;
-	--small-spacing:	0.25rem 0.5rem 0.25rem 0.5rem;
-	--flex-gap: 			1rem;
-	--client-width: 	9rem;
-	--stafbox-width: 	12.2rem;
-	--client-queue: 	20rem;
-	--container-twoH: 22.2rem;
-	--small-br:				.1rem solid;
-	--medium-br: 			1rem solid;
-	--twSpeed:				6s;
-	--primary-br:		#666;
+	/* Ignore standard formatting, format by section or type */
+	font-size: 					62.5%;
+	
+	--small-spacing:		0.25rem 0.5rem 0.25rem 0.5rem;
+	--flex-gap: 				1rem;
+	--container-twoH: 	23.2rem;
+	
+	--client-width: 		9rem;
+	--stafbox-width: 		12.2rem;
+	--client-queue: 		20rem;
+		
+	--small-br:					.1rem solid;
+	--medium-br: 				1rem solid;
+	
+	--twSpeed:					6s;
+	
+	--primary-clr: 		#3E4E50;
+	--pri-br-clr:			#7A687F;
+	--dark: 					#00BD9D;
+	--light: 					#88D7D2;
+	--primary-br:			#666;
 	--bg-clr-client:	hsl(49 37% 94%);
+	
 	}
 * {
 	margin:		0;
 	padding:	0;
+	box-sizing: border-box;
 	}
 body {
 	font-size: 1.6rem;
+	background-color: var(--primary-clr);
 	font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-	}
+}
 html, body {
-		width:				100%; 
+		max-width:		100%; 
 		min-height:		100%;
-		font-size: 		1.2rem; 
+		margin: 			0; 
+		padding: 			0;
+		font-size: 		1.2rem;
+		box-sizing: 	border-box;
+		overflow-x: 	hidden;
 		text-align:		center;
 		font-family:	Arial, Helvetica, sans-serif; 
 	}
+
 /* #endregion */
 
 /* Computer--ipad layout */
@@ -48,10 +68,11 @@ html, body {
 	width:					100%;
 	min-height:			87rem;
 	margin:					0 auto; 
+	box-sizing: 		border-box;
 	display: 				flex;
 	align-items: 		stretch;
 	position: 			relative;
-	border:					var(--medium-br) #CCC;
+	border:					var(--medium-br) var( --pri-br-clr);
 }
 #salon > * {
 	margin:	var(--small-spacing)
@@ -69,7 +90,18 @@ html, body {
 	text-align:				center;
 	background-color: var(--bg-clr-client);
 }
-.client {
+#clients_queue > p {
+	grid-column-start: span 2;
+	height: 10%;
+	font-weight: bolder;
+}
+.amountOver5 {
+	width: 31rem !important;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-gap: 1rem;
+}
+.clientcard__image {
 	font-size:										1rem;
 	line-height:									1rem;
 	min-height:										8rem;
@@ -82,20 +114,34 @@ html, body {
 	background-repeat:						no-repeat;
   position:											relative;
 	background-color:							teal;
-
+}
+.first_customer::before {
+	content: '(First)';
+}
+.preference {
+	font-size: 		1rem;
+	margin: 			auto;
+	width: 				min-content;
+	font-family: 	Verdana, Geneva, Tahoma, sans-serif;
+	font-weight: 	bold;
 }
 .disappear {
 	display: none;
 	opacity: 0;
 }
+
+
+
 #aoc {
-	padding: 0;
-	box-sizing: border-box;
-	margin: 0 auto;
-	width: 15.5rem;
-	margin-top: 	1rem;
+	padding: 			0;
+	margin: 			0 auto;
+	margin-top: 	1.5rem;
+	width: 				15.5rem;
+	height: 			50%;
 	position: 		relative;
+	box-sizing: 	border-box;
 	font-family: 	"Source Code Pro", monospace;
+	grid-column-start: span 2;
 }
 #aoc::before,
 #aoc::after {
@@ -130,11 +176,15 @@ html, body {
 }
 /* ID */
 #cars_place {
-	display: flex;
-	flex-direction: column;
-	gap: var(--flex-gap);
-	width: 40rem;
-	height: 120%;
+	z-index: 						0;
+	padding-top: 				.5rem;
+	width: 							41rem;
+	height: 						120%;
+	display: 						flex;
+	flex-direction: 		column;
+	box-sizing:				 	border-box;
+	background-color: 	var(--bg-clr-client);
+	gap: 								var(--flex-gap);
 }
 #cars_place ul li {
 	padding: 			1rem;
@@ -195,21 +245,16 @@ html, body {
 #porsche > ul > li > div > span.preference {
 	display: none;
 }
-.preference {
-	width: min-content;
-	font-family: Verdana, Geneva, Tahoma, sans-serif;
-	font-weight: bold;
-	margin: auto;
-	font-size: 1rem;
-	width: min-content;
-}
 
 /* #region -- Staffbox container */
 #staffbox {
 	margin-top: var(--container-twoH);
 }
 .staffbox__exit {
+	padding: 			1rem;
+	margin-bottom: .3rem;
 	width:				12rem;
+	/* height: 100%; */
 }
 .staffbox__image {
 	width: 				7rem;
