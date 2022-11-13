@@ -26,14 +26,18 @@
 	--small-br:					.1rem solid;
 	--medium-br: 				1rem solid;
 	
-	--twSpeed:					6s;
+	--twSpeed:					4s;
 	
-	--primary-clr: 		#3E4E50;
-	--pri-br-clr:			#7A687F;
+	--primary-clr: 		#264653;
+	--secondary-clr:  #2A9D8F;
+	--tertiary-clr:   #E9C46A;
+	--accent-clr:		  #F4A261;
+	--accent-sec-clr: #E76F51;
+	--pri-bdr-clr:		#7A687F;
 	--dark: 					#00BD9D;
 	--light: 					#88D7D2;
-	--primary-br:			#666;
-	--bg-clr-client:	hsl(49 37% 94%);
+	--primary-bdr:		#666;
+	--bg-clr-client:	var(--secondary-clr);
 	
 	}
 * {
@@ -85,7 +89,7 @@ html, body {
 #clients_queue {
 	margin-top:				var(--container-twoH);
 	width:						20rem;
-	min-height: 			50rem;
+	max-height: 			66.6rem;
 	position: 				relative;
 	text-align:				center;
 	background-color: var(--bg-clr-client);
@@ -98,8 +102,10 @@ html, body {
 .amountOver5 {
 	width: 31rem !important;
 	display: grid;
+	grid-template-rows: auto;
 	grid-template-columns: 1fr 1fr;
 	grid-gap: 1rem;
+	/* grid-auto-rows: 1fr; */
 }
 .clientcard__image {
 	font-size:										1rem;
@@ -109,11 +115,12 @@ html, body {
 	margin:/*Auto vertical align*/0 auto;
 	margin-top:										1rem;
 	border:												var(--small-br);
+	border-color: 								var(--primary-bdr);
+	background-color:							var(--pri-bdr-clr);
 	width:												var(--client-width); 
 	background-position:					bottom;
 	background-repeat:						no-repeat;
   position:											relative;
-	background-color:							teal;
 }
 .first_customer::before {
 	content: '(First)';
@@ -130,18 +137,26 @@ html, body {
 	opacity: 0;
 }
 
-
-
 #aoc {
-	padding: 			0;
-	margin: 			0 auto;
-	margin-top: 	1.5rem;
-	width: 				15.5rem;
-	height: 			50%;
+	padding: 			1rem 0 0 0;
+	margin: 			1rem auto;
+	width: 				16rem;
 	position: 		relative;
 	box-sizing: 	border-box;
 	font-family: 	"Source Code Pro", monospace;
 	grid-column-start: span 2;
+}
+.amountOver5 #aoc {
+	height: 3rem;
+	z-index: 1;
+}
+.amountOver5 p {
+	height: 3rem;
+	padding-bottom: 14rem;
+	z-index: 2;
+}
+.amountOver5 div.clientcard {
+	bottom: 14rem;
 }
 #aoc::before,
 #aoc::after {
@@ -161,6 +176,8 @@ html, body {
 
 #aoc::after {
 	width: 				0.250em;
+	height: 			1.5rem;
+	margin-top: 	.67rem;
 	border: 			var(--small-br);
 	background: white;
 	animation: 
@@ -249,11 +266,19 @@ html, body {
 /* #region -- Staffbox container */
 #staffbox {
 	margin-top: var(--container-twoH);
+	
 }
-.staffbox__exit {
-	padding: 			1rem;
+#staffbox > div {
+	--main-bg:  		var(--accent-clr);
+	--secondary-bg: var(--dark);
+	
+	background: radial-gradient(closest-side, var(--main-bg), var(--secondary-bg));
+}
+
+[class*="staffbox__"] {
+	padding: 			.5rem;
 	margin-bottom: .3rem;
-	width:				12rem;
+	width:				10rem;
 	/* height: 100%; */
 }
 .staffbox__image {
@@ -278,20 +303,22 @@ html, body {
 
 /* #region Amount of client, cars and amount */
 .display {
-	width:       25.5rem;
-	position:    absolute;
-	top: 0;
-	right: 0;
-	margin-top: 1rem;
+	top: 				 	0;
+	right: 			 	0;
+	margin-top: 	1rem;
+	width:       	25.5rem;
+	position:	    absolute;
 }
 .display ul{
-	padding: 0;
-	margin: 0;
+	padding: 	0;
+	margin: 	0;
 }
 .display ul li {
-	padding: 1rem;
-	border:  var(--small-br);
-	display: inline-block;
+	padding: 					1rem;
+	text-shadow: 			.1rem .1rem .3rem var(--light);
+	display: 					inline-block;
+	border:  					var(--small-br);
+	color: 						var(--accent-sec-clr);
 }
 .display__client {
 	box-sizing: border-box;
