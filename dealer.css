@@ -28,16 +28,19 @@
 	
 	--twSpeed:					4s;
 	
-	--primary-clr: 		#264653;
-	--secondary-clr:  #2A9D8F;
+	--clr-body-bg: 		#264653;
+	--clr-car-bg:  	  #2A9D8F;
+	--clr-text:				hsl(0 0% 15%);
+	--clr-heading: 		hsl(0 0% 25%);
 	--tertiary-clr:   #E9C46A;
 	--accent-clr:		  #F4A261;
 	--accent-sec-clr: #E76F51;
 	--pri-bdr-clr:		#7A687F;
 	--dark: 					#00BD9D;
+	--dark-theme: 		#232323;
 	--light: 					#88D7D2;
 	--primary-bdr:		#666;
-	--bg-clr-client:	var(--secondary-clr);
+	--bg-clr-client:	var(--clr-car-bg);
 	
 	}
 * {
@@ -47,7 +50,7 @@
 	}
 body {
 	font-size: 1.6rem;
-	background-color: var(--primary-clr);
+	background-color: var(--clr-body-bg);
 	font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 html, body {
@@ -323,5 +326,73 @@ html, body {
 .display__client {
 	box-sizing: border-box;
 	box-shadow: #666;
+}
+
+.visually-hidden {
+	height: 			.1rem;
+	width: 				.1rem;
+	clip: 				rect(0 0 0 0);
+	clip-path: 		inset(50%);
+	overflow: 		hidden;
+	position: 		absolute;
+	white-space:	nowrap;
+}
+
+.color-picker > fieldset {
+	border: 				0;
+	margin: 				0;
+	gap: 						2rem;
+	border-radius: 	0 0 1rem 1rem;
+	padding: 				1rem 3rem;
+	display: 				flex;
+	width: 					fit-content;
+	margin-inline: 	auto;
+	background: 		var(--clr-body-bg);
+}
+
+.color-picker input[type="radio"] {
+	border-radius: 	50%;
+	width: 					1.5rem;
+	height: 				1.5rem;
+	outline: 				.3rem solid var(--radio-color, currentColor);
+	outline-offset: .3rem;
+	appearance: 		none;
+}
+
+.color-picker input[type="radio"]:checked {
+	background-color: var(--radio-color);
+}
+
+.color-picker input[type="radio"]#light {
+	--radio-color: white;
+}
+
+.color-picker input[type="radio"]#dark {
+	--radio-color: 	var(--dark-theme);
+}
+
+.color-picker input[type="radio"]#pink {
+	--radio-color: pink;
+}
+
+.color-picker input[type="radio"]#tropical {
+	--radio-color: var(--clr-car-bg);
+}
+
+:root:has(#pink:checked) {
+	--clr-body-bg: 		hsl(310 50% 90%);
+	--clr-car-bg:  	  hsl(310 50% 90%);
+	--clr-text:				hsl(310 50% 15%);
+	--clr-heading: 		hsl(310 50% 25%);
+
+	--tertiary-clr:   #E9C46A;
+	--accent-clr:		  #F4A261;
+	--accent-sec-clr: #E76F51;
+	--pri-bdr-clr:		#7A687F;
+	--dark: 					#00BD9D;
+	--dark-theme: 		#232323;
+	--light: 					#88D7D2;
+	--primary-bdr:		#666;
+	--bg-clr-client:	var(--clr-car-bg);
 }
 /* #endregion */
