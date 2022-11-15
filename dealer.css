@@ -9,7 +9,10 @@
 /* #endregion (fold region please) This is only for understanding custom ways I've set things */
 /* Unit convention -- rem, CSS layout -- cascading theory, Sizing unit ordered by size ascending and units with text comes before text after integers */
 /* #region -- Base stuff, root, body, html etc. */
-@import url(https://fonts.google.com/specimen/Oswald);
+@font-face{
+	font-family: "Oswald";
+ 	src: url(https://fonts.google.com/specimen/Oswald);
+	}
 
 :root {
 	/* Ignore standard formatting, format by section or type */
@@ -19,7 +22,8 @@
 	--flex-gap: 				1rem;
 	--container-twoH: 	23.2rem;
 	
-	--client-width: 		9rem;
+	--client-width: 		8rem;
+	--client-height: 		8rem;
 	--stafbox-width: 		12.2rem;
 	--client-queue: 		20rem;
 		
@@ -40,8 +44,87 @@
 	--dark-theme: 		#232323;
 	--light: 					#88D7D2;
 	--primary-bdr:		#666;
-	--bg-clr-client:	var(--clr-car-bg);
-	
+	}
+
+/*:has selector support 
+https://caniuse.com/css-has
+https://www.lambdatest.com/web-technologies/css-has
+Generic supported
+chrome vers 108-110
+Edge 16.2-Tp
+Firefox null
+opera 91 or 92
+IE null
+*/
+:root:has(#light:checked) {
+	--clr-body-bg: hsl(0 0% 90%);
+  --clr-car-bg:  hsl(0 0% 100%);
+  --clr-text: 	 hsl(0 0% 15%);
+  --clr-heading: hsl(0 0% 25%);
+	}
+
+:root:has(#blue:checked) {
+  --clr-body-bg: hsl(209 50% 90%);
+  --clr-car-bg:  hsl(209 50% 100%);
+  --clr-text:		 hsl(209 50% 15%);
+  --clr-heading: hsl(209 50% 25%);
+	}
+
+:root:has(#tropical:checked) {
+	--clr-body-bg: 		#264653;
+	--clr-car-bg:  	  #2A9D8F;
+	--clr-text:				hsl(0 0% 15%);
+	--clr-heading: 		hsl(0 0% 25%);
+	}
+
+:root:has(#pink:checked) {
+	--clr-body-bg: 		hsl(310 50% 90%);
+	--clr-car-bg:  	  hsl(310 50% 90%);
+	--clr-text:				hsl(310 50% 15%);
+	--clr-heading: 		hsl(310 50% 25%);
+	}
+
+:root:has(#dark:checked) {
+  --clr-body-bg: hsl(209 50% 10%);
+  --clr-car-bg:  hsl(209 50% 5%);
+  --clr-text:		 hsl(209 50% 90%);
+  --clr-heading: hsl(209 50% 80%);
+	}
+
+/* No support fallback */
+.light {
+	--clr-body-bg: hsl(0 0% 90%);
+  --clr-car-bg:  hsl(0 0% 100%);
+  --clr-text: 	 hsl(0 0% 15%);
+  --clr-heading: hsl(0 0% 25%);
+	}
+
+.blue {
+	--clr-body-bg: hsl(209 50% 90%);
+	--clr-car-bg:  hsl(209 50% 100%);
+	--clr-text:		 hsl(209 50% 15%);
+	--clr-heading: hsl(209 50% 25%);
+	}
+
+.tropical {
+	--clr-body-bg:	#264653;
+	--clr-car-bg:		#2A9D8F;
+	--clr-text:			hsl(0 0% 15%);
+	--clr-heading:	hsl(0 0% 25%);
+	}
+
+.pink {
+  --clr-body-bg: hsl(310 50% 90%);
+  --clr-car-bg:  hsl(310 50% 100%);
+  --clr-text:		 hsl(310 50% 15%);
+  --clr-heading: hsl(310 50% 25%);
+	}
+
+.dark {
+  --clr-body-bg: hsl(209 50% 10%);
+  --clr-car-bg:  hsl(209 50% 5%);
+  --clr-text:		 hsl(209 50% 90%);
+  --clr-heading: hsl(209 50% 80%);
 	}
 * {
 	margin:		0;
@@ -49,10 +132,11 @@
 	box-sizing: border-box;
 	}
 body {
-	font-size: 1.6rem;
+	font-size: 				1.6rem;
+	color: 						var(--clr-text);
 	background-color: var(--clr-body-bg);
-	font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-}
+	font-family:			'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+	}
 html, body {
 		max-width:		100%; 
 		min-height:		100%;
@@ -69,98 +153,232 @@ html, body {
 
 /* Computer--ipad layout */
 
-/* #region -- Main container */
+/* #region -- Salon container */
 #salon {
-	margin-top:			5rem;
-	width:					100%;
-	min-height:			87rem;
-	margin:					0 auto; 
-	box-sizing: 		border-box;
-	display: 				flex;
-	align-items: 		stretch;
-	position: 			relative;
-	border:					var(--medium-br) var( --pri-br-clr);
-}
-#salon > * {
-	margin:	var(--small-spacing)
-}
-#clients_queue,#cashier,#exit {	
-	border: 				var(--small-br); 
-	border-color:		var(--primary-br);
-}
-/* Queue of customers */
-#clients_queue {
-	margin-top:				var(--container-twoH);
-	width:						20rem;
-	max-height: 			66.6rem;
+	margin-top:				5rem;
+	width:						100%;
+	min-height:				87rem;
+	margin:						0 auto; 
+	box-sizing: 			border-box;
+	display: 					flex;
+	align-items: 			stretch;
 	position: 				relative;
-	text-align:				center;
-	background-color: var(--bg-clr-client);
-}
+	justify-content:	center;
+	border:						var(--medium-br) var( --pri-br-clr);
+	}
+
+#salon > * {
+	margin:						var(--small-spacing)
+	}
+
+/* #region -- #cars_place */
+#cars_place {
+	z-index: 						0;
+	padding-top: 				.5rem;
+	width: 							41rem;
+	height: 						120%;
+	display: 						flex;
+	flex-direction: 		column;
+	box-sizing:				 	border-box;
+	background-color: 	var(--clr-car-bg);
+	gap: 								var(--flex-gap);
+	}
+	
+#cars_place ul li {
+	padding: 			1rem;
+	border: 			var(--small-br);
+	display: 			inline-block;
+	}
+
+#porsche > ul {
+	margin: 		var(--small-spacing);
+	padding: 		0;
+	gap: 				var(--flex-gap);
+	display: 		flex;
+	flex-wrap: 	wrap;
+	list-style: none;
+	box-sizing: border-box;
+	}
+
+#porsche > ul > li {
+	display: flex;
+	width:	25%;
+	gap: var(--flex-gap);
+	flex-shrink: 1;
+	flex-grow: 1;
+	flex-basis: 1;
+	/* flex-wrap and direction weirdly causes it to stack on one top of each other -- future me, also direction was intended bozo kami (Tps) */
+	flex-wrap: 	wrap;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	padding: 0;
+	margin: 0;
+	}
+
+#porsche > ul > li > img {
+	height: 10vh;
+	float:  left;
+	border: none !important;
+	margin: auto;
+
+	}
+
+#porsche > ul > li > div {
+	box-sizing: border-box;
+	background-repeat: no-repeat;
+	background-size: cover;
+	width: 12.2rem;
+	}
+
+#porsche > ul > li > div > span.preference {
+	display: none;
+	}
+
+/* Parent div of cars */
+.place {
+	min-height: 	21rem;
+	width: 				40rem;
+	margin: 			var(--small-spacing);
+	border:				var(--small-br);
+	}
+
+.ui-droppable .clientcard, .ui-droppable .first_customer::before {
+	content: '';
+	left: 				0 !important;
+	top:  				0 !important;
+	padding-right: .2rem;
+	}
+
+/* Child image div */
+.car {
+	z-index: 		-2;
+	width: 			7rem;
+	min-height: 7rem;
+	}
+
+/* #endregion */
+
+/* #region -- #staffbox.staffbox */
+#staffbox {
+	margin-top: var(--container-twoH);
+	
+	}
+
+#staffbox > div {
+	--main-bg:  		var(--accent-clr);
+	--secondary-bg: var(--dark);
+	
+	background: radial-gradient(closest-side, var(--main-bg), var(--secondary-bg));
+	}
+
+[class*="staffbox__"] {
+	padding: 			.5rem;
+	margin-bottom: .3rem;
+	width:				10rem;
+	/* height: 100%; */
+	}
+
+.staffbox__image {
+	width: 				7rem;
+	}
+/* #endregion */
+
+/* #region -- #clients_queue */
+#clients_queue,#cashier,#exit {	
+	border: 						var(--small-br); 
+	border-color:				var(--primary-br);
+	}
+
+#clients_queue {
+	margin-top:					var(--container-twoH);
+	width:							20rem;
+	max-height: 				66.6rem;
+	position: 					relative;
+	text-align:					center;
+	background-color: 	var(--clr-car-bg);
+	}
+
 #clients_queue > p {
-	grid-column-start: span 2;
-	height: 10%;
-	font-weight: bolder;
-}
+	height: 						2rem !important;
+	grid-column-start: 	span 2;
+	font-weight: 				bolder;
+	}
+
 .amountOver5 {
-	width: 31rem !important;
-	display: grid;
-	grid-template-rows: auto;
-	grid-template-columns: 1fr 1fr;
-	grid-gap: 1rem;
-	/* grid-auto-rows: 1fr; */
-}
+	grid-gap: 							1rem;
+	grid-template-columns: 	repeat(1fr 1fr);
+	width: 									31rem !important;
+	display: 								grid;
+	grid-template-rows: 		auto;
+	}
+
+.clientcard {
+	z-index: 						3;
+	grid-column-start: 	span 1;
+	position: 					relative;
+	}
+
 .clientcard__image {
 	font-size:										1rem;
 	line-height:									1rem;
-	min-height:										8rem;
-	padding: 											.4rem 0;
+	padding: 											.2rem 0;
 	margin:/*Auto vertical align*/0 auto;
 	margin-top:										1rem;
 	border:												var(--small-br);
 	border-color: 								var(--primary-bdr);
 	background-color:							var(--pri-bdr-clr);
 	width:												var(--client-width); 
+	min-height:										var(--client-height);
 	background-position:					bottom;
 	background-repeat:						no-repeat;
   position:											relative;
-}
+	}
+
 .first_customer::before {
 	content: '(First)';
-}
+	}
+
 .preference {
 	font-size: 		1rem;
 	margin: 			auto;
 	width: 				min-content;
 	font-family: 	Verdana, Geneva, Tahoma, sans-serif;
 	font-weight: 	bold;
-}
+	}
+
 .disappear {
 	display: none;
 	opacity: 0;
-}
+	}
 
 #aoc {
-	padding: 			1rem 0 0 0;
-	margin: 			1rem auto;
-	width: 				16rem;
-	position: 		relative;
-	box-sizing: 	border-box;
-	font-family: 	"Source Code Pro", monospace;
-	grid-column-start: span 2;
-}
+	padding: 						1rem 0 0 0;
+	margin: 						1rem auto;
+	width: 							16rem;
+	position:				 		relative;
+	box-sizing: 				border-box;
+	font-family: 				"Source Code Pro", monospace;
+	grid-column-start:	span 2;
+	}
+
 .amountOver5 #aoc {
-	height: 3rem;
-	z-index: 1;
-}
+	z-index: 	1;
+	height: 	3rem;
+	}
+
 .amountOver5 p {
-	height: 3rem;
-	padding-bottom: 14rem;
-	z-index: 2;
-}
+	z-index: 				2;
+	height: 				3rem;
+	line-height: 		3rem;
+	margin-bottom: 	10rem;
+	}
+
 .amountOver5 div.clientcard {
-	bottom: 14rem;
-}
+	padding-top: 	3.5rem;
+	bottom: 			14rem;
+	}
+
 #aoc::before,
 #aoc::after {
 	top: 			0;
@@ -169,13 +387,13 @@ html, body {
 	left: 		0;
 	content: 	'';
 	position: absolute;
-}
+	}
 
 #aoc::before {
-	background:		var(--bg-clr-client);
+	background:		var(--clr-car-bg);
 	animation: 
 		typewriter 	var(--twSpeed) steps(19) 1s forwards;
-}
+	}
 
 #aoc::after {
 	width: 				0.250em;
@@ -186,125 +404,34 @@ html, body {
 	animation: 
 		typewriter 	var(--twSpeed) steps(19) 1s forwards,
 		blink 750ms steps(19) infinite;
-}
+	}
 
 @keyframes typewriter {
 	to {left: 100%;}
-}
+	}
+
 @keyframes blink {
-	to {border: none; background: var(--bg-clr-client);}
-}
-/* ID */
-#cars_place {
-	z-index: 						0;
-	padding-top: 				.5rem;
-	width: 							41rem;
-	height: 						120%;
-	display: 						flex;
-	flex-direction: 		column;
-	box-sizing:				 	border-box;
-	background-color: 	var(--bg-clr-client);
-	gap: 								var(--flex-gap);
-}
-#cars_place ul li {
-	padding: 			1rem;
-	border: 			var(--small-br);
-	display: 			inline-block;
-}
-/* Parent div of cars */
-.place {
-	min-height: 	21rem;
-	width: 				40rem;
-	margin: 			var(--small-spacing);
-	border:				var(--small-br);
-}
-/* Child image div */
-.car {
-	z-index: 		-2;
-	width: 			7rem;
-	min-height: 7rem;
-}
-/* Child image div with client */
-#porsche > ul {
-	margin: 		var(--small-spacing);
-	padding: 		0;
-	gap: 				var(--flex-gap);
-	display: 		flex;
-	flex-wrap: 	wrap;
-	list-style: none;
-	box-sizing: border-box;
-}
-#porsche > ul > li {
-	display: flex;
-	width:	25%;
-	gap: var(--flex-gap);
-	flex-shrink: 1;
-	flex-grow: 1;
-	flex-basis: 1;
-	/* flex-wrap and direction weirdly causes it to stack on one top of each other -- future me, also direction was intended bozo kami */
-	flex-wrap: 	wrap;
-	/* flex-direction: column; */
-	padding: 0;
-	margin: 0;
-}
-#porsche > ul > li > img {
-	height: 10vh;
-	float: left;
-	border: none !important;
-	margin: auto;
-}
+	to {border: none; background: var(--clr-car-bg);}
+	}
 
-#porsche > ul > li > div {
-	/* flex: 50%; */
-	box-sizing: border-box;
-	background-repeat: no-repeat;
-	background-size: cover;
-	float: right;
-	width: 5rem;
-}
-#porsche > ul > li > div > span.preference {
-	display: none;
-}
-
-/* #region -- Staffbox container */
-#staffbox {
-	margin-top: var(--container-twoH);
-	
-}
-#staffbox > div {
-	--main-bg:  		var(--accent-clr);
-	--secondary-bg: var(--dark);
-	
-	background: radial-gradient(closest-side, var(--main-bg), var(--secondary-bg));
-}
-
-[class*="staffbox__"] {
-	padding: 			.5rem;
-	margin-bottom: .3rem;
-	width:				10rem;
-	/* height: 100%; */
-}
-.staffbox__image {
-	width: 				7rem;
-}
-/* #endregion */
-
-/*  #region -- Client images  */
-.client_1{background-image:url(images/client_1.jpg);}
-.client_2{background-image:url(images/client_2.jpg);}
-.client_3{background-image:url(images/client_3.jpg);}
-.client_4{background-image:url(images/client_4.jpg);}
-.client_5{background-image:url(images/client_5.jpg);}
-.client_6{background-image:url(images/client_6.jpg);}
-.client_7{background-image:url(images/client_7.jpg);}
-.client_8{background-image:url(images/client_8.jpg);}
-.client_9{background-image:url(images/client_9.jpg);}
-.client_10{background-image:url(images/client_10.jpg);}
+	/*  #region -- Client images  */
+	.client_1{background-image:url(images/client_1.jpg);}
+	.client_2{background-image:url(images/client_2.jpg);}
+	.client_3{background-image:url(images/client_3.jpg);}
+	.client_4{background-image:url(images/client_4.jpg);}
+	.client_5{background-image:url(images/client_5.jpg);}
+	.client_6{background-image:url(images/client_6.jpg);}
+	.client_7{background-image:url(images/client_7.jpg);}
+	.client_8{background-image:url(images/client_8.jpg);}
+	.client_9{background-image:url(images/client_9.jpg);}
+	.client_10{background-image:url(images/client_10.jpg);}
+	/* #endregion */
 /* #endregion */
 
 /* #endregion */
 
-/* #region Amount of client, cars and amount */
+/* #region -- #display.display */
+/* #region -- ul */
 .display {
 	top: 				 	0;
 	right: 			 	0;
@@ -312,10 +439,12 @@ html, body {
 	width:       	25.5rem;
 	position:	    absolute;
 }
+
 .display ul{
 	padding: 	0;
 	margin: 	0;
 }
+
 .display ul li {
 	padding: 					1rem;
 	text-shadow: 			.1rem .1rem .3rem var(--light);
@@ -323,11 +452,14 @@ html, body {
 	border:  					var(--small-br);
 	color: 						var(--accent-sec-clr);
 }
+
 .display__client {
 	box-sizing: border-box;
 	box-shadow: #666;
 }
+/* #endregion  */
 
+/* #region -- form.color-picker */
 .visually-hidden {
 	height: 			.1rem;
 	width: 				.1rem;
@@ -352,10 +484,10 @@ html, body {
 
 .color-picker input[type="radio"] {
 	border-radius: 	50%;
+	outline-offset: .3rem;
 	width: 					1.5rem;
 	height: 				1.5rem;
 	outline: 				.3rem solid var(--radio-color, currentColor);
-	outline-offset: .3rem;
 	appearance: 		none;
 }
 
@@ -364,35 +496,24 @@ html, body {
 }
 
 .color-picker input[type="radio"]#light {
-	--radio-color: white;
+	--radio-color:	white;
 }
 
-.color-picker input[type="radio"]#dark {
-	--radio-color: 	var(--dark-theme);
+.color-picker input[type="radio"]#blue {
+	--radio-color:	blue;
+}
+
+.color-picker input[type="radio"]#tropical {
+	--color: #2A9D8F;
+	--radio-color: var(--color);
 }
 
 .color-picker input[type="radio"]#pink {
 	--radio-color: pink;
 }
 
-.color-picker input[type="radio"]#tropical {
-	--radio-color: var(--clr-car-bg);
+.color-picker input[type="radio"]#dark {
+	--radio-color:	var(--dark-theme);
 }
-
-:root:has(#pink:checked) {
-	--clr-body-bg: 		hsl(310 50% 90%);
-	--clr-car-bg:  	  hsl(310 50% 90%);
-	--clr-text:				hsl(310 50% 15%);
-	--clr-heading: 		hsl(310 50% 25%);
-
-	--tertiary-clr:   #E9C46A;
-	--accent-clr:		  #F4A261;
-	--accent-sec-clr: #E76F51;
-	--pri-bdr-clr:		#7A687F;
-	--dark: 					#00BD9D;
-	--dark-theme: 		#232323;
-	--light: 					#88D7D2;
-	--primary-bdr:		#666;
-	--bg-clr-client:	var(--clr-car-bg);
-}
+/* #endregion */
 /* #endregion */
