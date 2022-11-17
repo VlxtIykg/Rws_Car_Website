@@ -35,30 +35,4 @@ Link to my other repositories: https://github.com/VlxtIykg/Kami/tree/master *Dep
 ### Bootstrap? Notion/Notion api usage? Database usage? Supply and demand for cars to be changed? Change client likelyhood with amount of customers/purchasers based on irl automobile shop? Hoping to make responsive web layouts with flex and what not with less static units or more auto rws such as % units or flex.
 
 ----
-# Rough todo list
-HTML<br>
-	-	[]	Mobile design.
-	-	[]	Tablet Design.
-	-	[]	Desktop Design.
-	-	[x]	Specific design 772.
-	-	[]	Nav bar.
-	-	[]	Footer.
 
-CSS<br>
-	-	Media queries
-	-	[]	320px - 480px
-	-	[]	481px - 768px
-	-	[]	769px	-	1024px
-	-	[]	1025px	-	1200px
-	-	[]	Potentially more themes
-	-	[]	Better exit and/or cashier colors
-	-	[]	Make 3d button look more realitic
-	
-JS<br>
-	-	[]	Nav bar 
-	-	[]	Still planning
-	-	[]	Randomizing client
-
-Others<br>
-	-	[]	Add more assets and change or deprecate old assets
-	-	[]	Sleep less
