@@ -8,10 +8,10 @@ HTML
 -	[ ]	Nav bar.
 -	[ ]	Footer.<br>
 - CSS
--	[ ]	320px 	<x> 480px
--	[ ]	481px 	<x> 768px
--	[ ]	769px		<x>	1024px
--	[ ]	1025px	<x>	1200px
+-	[ ]	320px 	< x > 480px
+-	[ ]	481px 	< x > 768px
+-	[ ]	769px		< x >	1024px
+-	[ ]	1025px	< x >	1200px
 -	[ ]	Potentially more themes
 -	[ ]	Better exit and/or cashier colors
 -	[ ]	Make 3d button look more realitic
