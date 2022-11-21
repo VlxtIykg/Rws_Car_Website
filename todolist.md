@@ -19,6 +19,8 @@ HTML
 -	[ ]	Nav bar 
 -	[ ]	Still planning
 -	[ ]	Randomizing client
+- [ ] Convert accept classes in jquery droppable to data attribute tags
 - Others
 -	[ ]	Add more assets and change or deprecate old assets
 -	[ ]	Sleep less
+- [ ] Reserved cars for future purchases
