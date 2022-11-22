@@ -13,7 +13,7 @@
 	font-family: "Oswald";
  	src: url(https://fonts.google.com/specimen/Oswald);
 	}
-
+@layer one  {
 :root {
 	/* Ignore standard formatting, format by section or type */
 	font-size: 					62.5%;
@@ -133,12 +133,22 @@ IE null
 	box-sizing: border-box;
 	}
 	
+*::selection {
+	background-color: red;
+	}
+
 body {
 	font-size: 				1.6rem;
 	color: 						var(--clr-text);
 	background-color: var(--clr-body-bg);
 	font-family:			'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 	perspective: 			80rem;
+	}
+
+.unfocused {
+	opacity: 40%;
+	z-index: -1;
+	position: relative;
 	}
 
 html, body {
@@ -152,7 +162,7 @@ html, body {
 		text-align:		center;
 		font-family:	Arial, Helvetica, sans-serif; 
 	}
-
+}
 /* #endregion */
 
 /* Computer--ipad layout */
@@ -194,7 +204,10 @@ html, body {
 	display: 			inline-block;
 	}
 
-#porsche > ul {
+#porsche > ul,
+#volkswagen > ul,
+#audi > ul,
+#bmw > ul {
 	margin: 		var(--small-spacing);
 	padding: 		0;
 	gap: 				var(--flex-gap);
@@ -204,7 +217,11 @@ html, body {
 	box-sizing: border-box;
 	}
 
-#porsche > ul > li {
+
+#porsche > ul > li, 
+#volkswagen > ul > li, 
+#audi > ul > li,
+#bmw > ul > li {
 	display: flex;
 	width:	25%;
 	gap: var(--flex-gap);
@@ -220,7 +237,10 @@ html, body {
 	margin: 0;
 	}
 
-#porsche > ul > li > img {
+#porsche > ul > li > img, 
+#volkswagen > ul > li > img, 
+#audi > ul > li > img, 
+#bmw > ul > li > img {
 	height: 10vh;
 	float:  left;
 	border: none !important;
@@ -228,17 +248,48 @@ html, body {
 
 	}
 
-#porsche > ul > li > div {
+#porsche > ul > li > div,
+#volkswagen > ul > li > div, 
+#audi > ul > li > div, 
+#bmw > ul > li > div {
 	box-sizing: border-box;
 	background-repeat: no-repeat;
 	background-size: cover;
 	width: 12.2rem;
 	}
 
-#porsche > ul > li > div > span.preference {
+#porsche > ul > li > div > span.preference, 
+#volkswagen > ul > li > div > span.preference, 
+#audi > ul > li > div > span.preference, 
+#bmw > ul > li > div > span.preference {
 	display: none;
 	}
 
+.car_selected {
+	opacity: 50%;
+	background-clip: content-box;
+	position: relative;
+	}
+.car_selected::before,
+.car_selected::after {
+	top: 			0;
+	right: 		0;
+	bottom: 	0; 
+	left: 		0;
+	content: 	'';
+	position: absolute;
+}
+
+.car_selected::after {
+	width: 							10rem;
+	padding-top:			 	1rem;
+	margin-top: 				3rem;
+	height: 						20%;
+	line-height:				15%;
+	content: 						"Sold";
+	transform: 					rotate(45deg);
+	background-color:	crimson;
+}
 /* Parent div of cars */
 .place {
 	min-height: 	21rem;
@@ -418,18 +469,20 @@ html, body {
 	to {border: none; background: var(--clr-car-bg);}
 	}
 
-	/*  #region -- Client images  */
-	.client_1{background-image:url(images/client_1.jpg);}
-	.client_2{background-image:url(images/client_2.jpg);}
-	.client_3{background-image:url(images/client_3.jpg);}
-	.client_4{background-image:url(images/client_4.jpg);}
-	.client_5{background-image:url(images/client_5.jpg);}
-	.client_6{background-image:url(images/client_6.jpg);}
-	.client_7{background-image:url(images/client_7.jpg);}
-	.client_8{background-image:url(images/client_8.jpg);}
-	.client_9{background-image:url(images/client_9.jpg);}
-	.client_10{background-image:url(images/client_10.jpg);}
-	/* #endregion */
+/*  #region -- Client images  */
+.client_1{background-image:url(images/client_1.jpg);}
+.client_2{background-image:url(images/client_2.jpg);}
+.client_3{background-image:url(images/client_3.jpg);}
+.client_4{background-image:url(images/client_4.jpg);}
+.client_5{background-image:url(images/client_5.jpg);}
+.client_6{background-image:url(images/client_6.jpg);}
+.client_7{background-image:url(images/client_7.jpg);}
+.client_8{background-image:url(images/client_8.jpg);}
+.client_9{background-image:url(images/client_9.jpg);}
+.client_10{background-image:url(images/client_10.jpg);}
+
+/* #endregion */
+
 /* #endregion */
 
 /* #endregion */
@@ -521,7 +574,7 @@ html, body {
 }
 /* #endregion */
 
-/* #region --btn */
+/* #region -- btn */
 .reset-button {
 	margin-top:				1rem;
 	margin-left: 			3rem;
@@ -563,4 +616,123 @@ html, body {
 }
 
 /* #endregion */
+	
+/* #region -- payment */
+/* If you don't have layer css, don't use IE.. (no promises I'll try to make it available to IE (Mobile browser will be fine I'm making a custom layout for it)) */
+@layer one {
+	.ui-dialog {
+		bottom: 	0 !important;
+		right: 		0 !important;
+		width: 		50rem !important;
+		margin: 	auto 0;
+		position: relative !important;
+	}
+
+	.ui-icon-closethick {
+		padding: 					1rem !important;
+		color:						var(--clr-text);
+		
+
+		background-color: var(--clr-body-bg); /* Bigger contrast*/
+	}
+
+	a >.ui-icon-closethick {
+		margin: 					.2rem !important;
+		border: 					none !important;
+		text-decoration: 	none;
+		color: 						var(--clr-text) !important;
+	}
+
+	:link>linktext {
+		color: 						var(--clr-text) !important;
+	}
+	.payment, .payment > div  {
+		margin-top: 1rem;
+		display: flex;
+		flex-direction: column;
+	}
+}
+@layer two {
+
+	.payment__buttons {
+		flex-direction: 	row;
+		justify-content:	space-between;
+	}
+	
+	.payment__buttons > button {
+		padding:				  .5rem;
+		width: 						max-content;
+		background-color: var(--clr-car-bg);
+		color:						var(--clr-text);
+		cursor:						pointer;
+		overflow-wrap: 		break-word;
+		word-wrap: 				break-word;
+	}
+
+	.payment__buttons > button:nth-child(1) {
+		outline: 	.2rem solid greenyellow;
+		border: 	none;
+	}
+
+	.payment__buttons > button:nth-child(2) {
+		outline: 	.2rem solid rosybrown;
+		border: 	none;
+	}
+
+	.buy {
+		margin-right: 7rem;
+		z-index: 			1;
+		position: 		relative;
+	}
+
+	.buy::after {
+		top: 								0;
+		left: 							0;
+		z-index: 						0;
+		width: 							100%;
+		height: 						100%;
+		content: 						"";
+		position: 					absolute;
+		background-color: rgba(255, 255, 255, 0.5);
+		transform:					scaleX(0);
+		transform-origin: 	left;
+		transition: 				transform 200ms ease-in-out;
+	}
+
+	.buy:hover::after {
+		transform:					scaleX(1);
+		transform-origin: 	right;
+		}
+	
+	.ui-dialog {
+		opacity: 100%;
+		z-index: 10;
+		background-color: var(--clr-car-bg);
+		padding-top: 1rem;
+
+	}
+}
+
+.bill {
+	margin-top: 1rem;
+	width: 			25.5rem;
+	height: 		100%;
+	position:		relative;
+}
+
+.bill > div {
+	width: 		inherit;
+	position: absolute;
+}
+
+.bill > div:first-child {
+	z-index: 	-1;
+	opacity: 0;
+}
+
+/* #endregion */
+
+.footer {
+	margin: 1rem;
+}
 /* #endregion */
