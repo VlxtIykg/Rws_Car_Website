@@ -2,19 +2,18 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<!-- <meta X-Content-Type-Options: sniff> -->
 	<title>Car Dealer</title>
 	<link rel="icon" href="images/car-title-logo.png">
 	<link rel="stylesheet" type="text/css" href="dealer.css">
 	<script type="text/javascript" language="javascript" src="jquery/js/jquery-1.8.3.js"></script>
 	<script type="text/javascript" language="javascript" src="jquery/js/jquery-ui-1.9.2.custom.js"></script>
-	<script src="js/bundle.js"></script>
-	<script src="js/addAttribute.js" type="module"></script>
 	<script type="text/javascript" language="javascript" src="dealer.js"></script>
 	<script src="js/localStorage.js" defer></script>
 </head>
 
 <body>
-	<main id="salon">
+	<div id="salon">
 
 		<div id="cars_place">
 
@@ -22,10 +21,10 @@
 			<div id="porsche" class="place">
 				<h4>Porsche</h4>
 				<ul>
-					<li class="car_in_stock"><img class="car" width="70px" src="images/Porsche_1.jpg" alt="Porsche car 1"></li>
-					<li class="car_in_stock"><img class="car" width="70px" src="images/Porsche_2.jpg" alt="Porsche car 2"></li>
-					<li class="car_in_stock"><img class="car" width="70px" src="images/Porsche_3.jpg" alt="Porsche car 3"></li>
-					<li class="car_in_stock"><img class="car" width="70px" src="images/Porsche_4.jpg" alt="Porsche car 4"></li>
+					<li><img class="car" width="70px" src="images/Porsche_1.jpg" alt="Porsche car 1"></li>
+					<li><img class="car" width="70px" src="images/Porsche_2.jpg" alt="Porsche car 2"></li>
+					<li><img class="car" width="70px" src="images/Porsche_3.jpg" alt="Porsche car 3"></li>
+					<li><img class="car" width="70px" src="images/Porsche_4.jpg" alt="Porsche car 4"></li>
 				</ul>
 			</div>
 			
@@ -33,12 +32,12 @@
 			<div id="volkswagen" class="place">
 				<h4>Volkswagen</h4>
 				<ul>
-					<li class="car_in_stock"><img class="car" src="images/Volkswagen_1.jpg" alt="Volkswagen car 1"></li>
-					<li class="car_in_stock"><img class="car" src="images/volkswagen_2.png" alt="Volkswagen car 2"></li>
-					<li class="car_in_stock"><img class="car" src="images/volkswagen_3.jpg" alt="Volkswagen car 3"></li>
-					<li class="car_in_stock"><img class="car" src="images/volkswagen_4.jpg" alt="Volkswagen car 4"></li>
-					<li class="car_in_stock"><img class="car" src="images/volkswagen_5.jpg" alt="Volkswagen car 5"></li>
-					<li class="car_in_stock"><img class="car" src="images/volkswagen_6.jpg" alt="Volkswagen car 6"></li>
+					<li><img class="car" src="images/Volkswagen_1.jpg" alt="Volkswagen car 1"></li>
+					<li><img class="car" src="images/volkswagen_2.png" alt="Volkswagen car 2"></li>
+					<li><img class="car" src="images/volkswagen_3.jpg" alt="Volkswagen car 3"></li>
+					<li><img class="car" src="images/volkswagen_4.jpg" alt="Volkswagen car 4"></li>
+					<li><img class="car" src="images/volkswagen_5.jpg" alt="Volkswagen car 5"></li>
+					<li><img class="car" src="images/volkswagen_6.jpg" alt="Volkswagen car 6"></li>
 				</ul>
 			</div>
 
@@ -46,11 +45,11 @@
 			<div id="audi" class="place">
 				<h4>Audi</h4>
 				<ul>
-					<li class="car_in_stock"><img class="car" src="images/Audi_1.jpg" alt="Audo car 1"></li>
-					<li class="car_in_stock"><img class="car" src="images/Audi_2.jpg" alt="Audo car 2"></li>
-					<li class="car_in_stock"><img class="car" src="images/Audi_3.jpg" alt="Audo car 3"></li>
-					<li class="car_in_stock"><img class="car" src="images/Audi_4.jpg" alt="Audo car 4"></li>
-					<li class="car_in_stock"><img class="car" src="images/Audi_5.jpg" alt="Audo car 5"></li>
+					<li><img class="car" src="images/Audi_1.jpg" alt="Audo car 1"></li>
+					<li><img class="car" src="images/Audi_2.jpg" alt="Audo car 2"></li>
+					<li><img class="car" src="images/Audi_3.jpg" alt="Audo car 3"></li>
+					<li><img class="car" src="images/Audi_4.jpg" alt="Audo car 4"></li>
+					<li><img class="car" src="images/Audi_5.jpg" alt="Audo car 5"></li>
 				</ul>
 			</div>
 			
@@ -58,9 +57,9 @@
 			<div id="bmw" class="place">
 				<h4>BMW</h4>
 				<ul>
-					<li class="car_in_stock"><img class="car" src="images/bmw_1.jpg" alt="BMW car 1"></li>
-					<li class="car_in_stock"><img class="car" src="images/bmw_2.jpg" alt="BMW car 2"></li>
-					<li class="car_in_stock"><img class="car" src="images/bmw_3.jpg" alt="BMW car 3"></li>
+					<li><img class="car" src="images/bmw_1.jpg" alt="BMW car 1"></li>
+					<li><img class="car" src="images/bmw_2.jpg" alt="BMW car 2"></li>
+					<li><img class="car" src="images/bmw_3.jpg" alt="BMW car 3"></li>
 				</ul>
 			</div>
 				
@@ -84,15 +83,15 @@
 			</div>
 		</div>
 
-		<div id="clients_queue" queue class=""><p>Queue</p></div>
+		<div id="clients_queue" class=""><p>Queue</p></div>
 
-	</main>
+	</div>
 
 	<!-- (Car | client | money amt) L90 -->
 	<div id="display" class="display">
 		<ul>
-			<li id="clients_served" class="display__client">0 client</li>
-			<li id="cars_sold" class="display__car">0 car</li>
+			<li id="clients_served" class="display__client">10 clients</li>
+			<li id="cars_sold" class="display__car">10 cars</li>
 			<li id="amount" class="display__amount">€ 120.000,00</li>
 		</ul>
 		<form class="color-picker" action="">
@@ -119,34 +118,8 @@
 			<div class="side main-side">Delete local storage! </div>
 			<div class="side hover-side" id="reset">This will delete your theme, are you sure?</div>
 		</div>
-
-		<div class="bill">
-			<div id="confirmation" class="payment">
-				<div>
-					<p>Do you want to make payment?</p>
-					<p class="promotion__buycar" style="width: 100%; margin-top: 1rem;" buy-car-promo>BUY CAR NOW!!!<br>Cheap prices 50%!!!</p>
-					
-				</div>
-				<div class="payment__buttons">
-					<button class="maybe" reserve-car>Reserve car now!</button>
-					<button class="buy" buy-car><strong>BUY CAR!</strong></button>
-					<button class="no" leave-car>No</button>
-				</div>
-				<!-- <div>
-					
-				</div> -->
-			</div>
-			<div id="reservation">
-				<button>Check reservation!</button>
-
-			</div>
-		</div>
-
 	</div>
+	
 
-	<footer class="footer">
-		<h5>Important notice</h5>
-		&copy; 2022. All rights reserved. Done By Amos&nbsp;
-	</footer>
 </body>
 </html>
